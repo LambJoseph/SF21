@@ -1,5 +1,4 @@
-# SF21 :squirrel:
-
+# SF21 :octopus:
 1. Download ```testset_3.mp4```
 2. Place it inside ```../sf21/testset/source```
 3. Run ```frames.py```
