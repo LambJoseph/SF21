@@ -1,4 +1,4 @@
-# SF21 :paperclip:
+## SF21 :octocat:
 1. Download ```testset_3.mp4```
 2. Place it inside ```../sf21/testset/source```
 3. Run ```frames.py```
