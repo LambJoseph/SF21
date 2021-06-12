@@ -5,7 +5,7 @@ import pandas as pd
 from bokeh.models import NumeralTickFormatter, tools
 from bokeh.plotting import figure, show
 
-df = pd.read_csv('../cv2/data.csv')
+df = pd.read_csv('../sf21/data.csv')
 x = np.arange(0,100)
 y = df['score']
 
