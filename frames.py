@@ -21,7 +21,7 @@ copy = frame_count
 data = { 'frame': [], 'score': round_score, 'path': []}
 count = 0
 
-with click.progressbar(length=frame_count, show_pos=True, fill_char="█", label="Extracting frames", show_percent=True) as bar:
+with click.progressbar(length=frame_count, show_pos=True, label="Extracting frames", show_percent=True) as bar:
     for i in bar:
         ret, frame = cap.read()
         if ret:
