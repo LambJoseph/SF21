@@ -1,6 +1,5 @@
 
 
-from bokeh.core.property.visual import FontSize
 import numpy as np
 import pandas as pd
 from bokeh import events
@@ -45,28 +44,41 @@ peek.ygrid.line_color = 'whitesmoke'
 p.ygrid.minor_grid_line_color = 'navy'
 p.ygrid.minor_grid_line_alpha = 0.1
 
-stats = PreText(text="", width=500, FontSize="14px")
+stats = PreText(text="", width=500)
+
 
 def update_stats():
     stats.text = pd.DataFrame(s2.data).to_string()
+
+
 
 def selection_change(event):
     event_data = event.geometry
     start = round(event_data['x0'])
     end   = round(event_data['x1'])
     d1 = s1.data
+    
+    new_frame = d1['frame'][start:end]
+    new_y = d1['image_path'][start:end]
+    new_image_path = d1['image_path'][start:end]
 
     new_data = {
-        'frame': d1['frame'][start:end], 
-        'y': d1['y'][start:end],
-        'image_path': d1['image_path'][start:end]
-    }
-    s2.stream(new_data, rollover=26)
+        'frame' : new_frame,
+        'y' : new_y, 
+        'image_path': new_image_path}
+
+    s2.stream(new_data, rollover=30)
     update_stats()
+    
 p.on_event('selectiongeometry', selection_change)
 
+
+# show the results
 r1 = row(p, stats)
 c1 = column(peek)
 c2 = column(r1, c1)
 
+
 curdoc().add_root(c2)
+
+
